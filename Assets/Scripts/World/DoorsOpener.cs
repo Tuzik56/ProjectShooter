@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorsOpener : MonoBehaviour
 {
     private GameObject[] enemies;
+    public int doorNumber;
 
     void Start()
     {
@@ -13,15 +14,25 @@ public class DoorsOpener : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        //enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //if (enemies.Length == 0 )
+        //{
+        //    Destroy(gameObject);
+        //}
+        if (doorNumber == 1)
         {
-            Destroy(gameObject);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Destroy(gameObject);
+            }
         }
-
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length == 0 )
+        else if (doorNumber == 2)
         {
-            Destroy(gameObject);
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                Destroy(gameObject);
+            }
         }
+        
     }
 }
