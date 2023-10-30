@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class HolderController : MonoBehaviour
 {
     public static HolderController Instance;
     GameObject currentItem;
+    private Item Item;
+    private string itemTag;
 
 
     private void Awake()
@@ -20,18 +23,25 @@ public class HolderController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)) Drop();
     }
 
-    public void Place(GameObject item)
+    public void Place(Item item)
     {
         if (currentItem != null) 
-        { 
-            Destroy(currentItem); 
-        
+        {
+            RemoveCurrentItem();
         }
-        currentItem = Instantiate(item);
+        Item = item;
+        itemTag = item.gameObj.tag;
+        currentItem = Instantiate(item.gameObj);
         currentItem.GetComponent<Rigidbody>().isKinematic = true;
         currentItem.transform.parent = transform;
         currentItem.transform.localPosition = Vector3.zero;
         currentItem.transform.localEulerAngles = new Vector3(0f, -20f, 0f);
+    }
+
+    public void RemoveCurrentItem()
+    {
+        InventoryManager.Instance.Add(Item);
+        Destroy(currentItem);
     }
 
     public void Drop()
@@ -41,8 +51,12 @@ public class HolderController : MonoBehaviour
             currentItem.transform.parent = null;
             currentItem.GetComponent<Rigidbody>().isKinematic = false;
             currentItem = null;
-
-            InventoryItemController.Instance.RemoveItem();
+            itemTag = null;
         }
+    }
+
+    public string GetItemTag()
+    {
+        return itemTag;
     }
 }

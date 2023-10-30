@@ -8,16 +8,10 @@ public class RayShooter : MonoBehaviour
     public float range = 100.0f;
     public Camera _camera;
 
-    void Start()
-    {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-    }
-
-
+ 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && (HolderController.Instance.GetItemTag() == "Weapon"))
         {
             Shoot();
         }

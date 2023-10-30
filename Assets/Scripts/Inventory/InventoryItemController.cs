@@ -14,8 +14,9 @@ public class InventoryItemController : MonoBehaviour
 
     public void PlaceInHolder()
     {
-        HolderController.Instance.Place(item.gameObj);
+        HolderController.Instance.Place(item);
         InventoryManager.Instance.CloseInvenroty();
+        RemoveItem();
     }
 
     public void AddItem(Item newItem)
@@ -26,6 +27,5 @@ public class InventoryItemController : MonoBehaviour
     public void RemoveItem()
     {
         InventoryManager.Instance.Remove(item);
-        //Destroy(gameObject);
     }
 }
