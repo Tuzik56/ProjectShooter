@@ -10,7 +10,6 @@ public class HolderController : MonoBehaviour
     public static HolderController Instance;
     GameObject currentItem;
     private Item Item;
-    private string itemTag;
 
 
     private void Awake()
@@ -30,12 +29,12 @@ public class HolderController : MonoBehaviour
             RemoveCurrentItem();
         }
         Item = item;
-        itemTag = item.gameObj.tag;
         currentItem = Instantiate(item.gameObj);
         currentItem.GetComponent<Rigidbody>().isKinematic = true;
         currentItem.transform.parent = transform;
         currentItem.transform.localPosition = Vector3.zero;
         currentItem.transform.localEulerAngles = new Vector3(0f, -20f, 0f);
+        currentItem.GetComponent<ItemController>().SetActive();
     }
 
     public void RemoveCurrentItem()
@@ -46,17 +45,11 @@ public class HolderController : MonoBehaviour
 
     public void Drop()
     {
-        if (currentItem != null)
-        {
+        if (currentItem != null) {
+            currentItem.GetComponent<ItemController>().SetDisabled();
             currentItem.transform.parent = null;
             currentItem.GetComponent<Rigidbody>().isKinematic = false;
             currentItem = null;
-            itemTag = null;
         }
-    }
-
-    public string GetItemTag()
-    {
-        return itemTag;
     }
 }

@@ -14,15 +14,7 @@ public class CameraMovement : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void Update()
-    {
-        if (!InventoryManager.Instance.IsInventoryOpened())
-        {
-            MoveCamera();
-        }
-    }
-
-    private void MoveCamera()
+    public void MoveCamera()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensivity * Time.deltaTime;

@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class TakeItem : MonoBehaviour
 {
-    public Item Item;
+    public float range = 10.0f;
+    public Camera _camera;
 
-    private void OnMouseOver()
+
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -17,7 +19,14 @@ public class TakeItem : MonoBehaviour
 
     void Take()
     {
-        InventoryManager.Instance.Add(Item);
-        Destroy(gameObject);
+        RaycastHit hit;
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range))
+        {
+            ItemController itemController = hit.transform.GetComponent<ItemController>();
+            if (itemController != null)
+            {
+                itemController.Take();
+            }
+        }
     }
 }

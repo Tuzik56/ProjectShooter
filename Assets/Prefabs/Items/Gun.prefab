@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 9103559408265358799}
   - component: {fileID: 2176062081981414182}
   - component: {fileID: 7030162637538071107}
-  - component: {fileID: 7706449843348271870}
-  - component: {fileID: 3525942675561880186}
+  - component: {fileID: 7472357490650419624}
+  - component: {fileID: -7311639329537731779}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Weapon
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 20
+  m_VersionIndex: 55
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
   m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 17
+  m_UnmodifiedMeshVersion: 37
   m_ShapeBox:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.05, y: 0.1, z: 0.5}
@@ -407,7 +407,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7706449843348271870
+--- !u!114 &7472357490650419624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,20 +416,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7010252061334258954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f84aeaa627fabe046a7e5b2201a31c19, type: 3}
+  m_Script: {fileID: 11500000, guid: 4102dc8a9a94067429cbd3aabdb33439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 3e0c7839d30d1a949aa6adfb49a89225, type: 2}
---- !u!114 &3525942675561880186
+  shoot: {fileID: -7311639329537731779}
+--- !u!114 &-7311639329537731779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7010252061334258954}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba03ebe000581514eaea06a7507cf1d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 20b8b209787894741895318af4815840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 3e0c7839d30d1a949aa6adfb49a89225, type: 2}
+  bulletPrefab: {fileID: 5459970243864430700, guid: 9ad964f0193c8e64eafaab631c6d03ae, type: 3}
+  bulletSpeed: 50
+  shootPause: 1

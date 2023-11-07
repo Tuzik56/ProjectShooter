@@ -11,11 +11,8 @@ public class InventoryManager : MonoBehaviour
 
     public Transform ItemContent;
     public GameObject InventoryItem;
-
     public GameObject inventory;
-    private bool isOpened = false;
-
-
+    
     public InventoryItemController[] InventoryItems;
 
 
@@ -24,20 +21,6 @@ public class InventoryManager : MonoBehaviour
         Instance = this; 
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            if (!isOpened)
-            {
-                OpenInventory();
-            }
-            else
-            {
-                CloseInvenroty();
-            }
-        }
-    }
 
     public void OpenInventory()
     {
@@ -45,8 +28,6 @@ public class InventoryManager : MonoBehaviour
         Cursor.visible = true;
         inventory.SetActive(true);
         ListItems();
-
-        isOpened = true;
     }
 
     public void CloseInvenroty()
@@ -54,10 +35,7 @@ public class InventoryManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         inventory.SetActive(false);
-
         Clear();
-
-        isOpened = false;
     }
 
     public void Clear()
@@ -67,12 +45,6 @@ public class InventoryManager : MonoBehaviour
             Destroy(item);
         }
     }
-
-    public bool IsInventoryOpened()
-    {
-        return isOpened;
-    }
-
 
     public void Add(Item item)
     {
