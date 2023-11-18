@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GunController : ItemController
 {
-    public GunShoot shoot;
+    public GunShoot gunShoot;
 
     public override void SetActive()
     {
-        shoot.enabled = true;
+        gunShoot.enabled = true;
     }
 
     public override void SetDisabled()
     {
-        shoot.enabled = false;
+        gunShoot.enabled = false;
     }
 }

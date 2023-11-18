@@ -24,16 +24,12 @@ public class InventoryManager : MonoBehaviour
 
     public void OpenInventory()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         inventory.SetActive(true);
         ListItems();
     }
 
     public void CloseInvenroty()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         inventory.SetActive(false);
         Clear();
     }

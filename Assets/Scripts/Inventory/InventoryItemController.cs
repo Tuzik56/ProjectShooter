@@ -15,7 +15,7 @@ public class InventoryItemController : MonoBehaviour
     public void PlaceInHolder()
     {
         HolderController.Instance.Place(item);
-        InventoryManager.Instance.CloseInvenroty();
+        InventoryOpener.Instance.Close();
         RemoveItem();
     }
 

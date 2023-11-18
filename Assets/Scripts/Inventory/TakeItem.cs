@@ -5,28 +5,31 @@ using UnityEngine;
 
 public class TakeItem : MonoBehaviour
 {
-    public float range = 10.0f;
-    public Camera _camera;
+    [SerializeField] private Transform _cameraTransform;
+    [SerializeField] private float _range = 10f;
 
-
-    void Update()
+    public void Take()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Take();
+            ItemController item = FindItem();
+            if (item != null)
+            {
+                item.Take();
+            }
         }
     }
 
-    void Take()
+    public ItemController FindItem()
     {
         RaycastHit hit;
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range))
+        if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _range))
         {
-            ItemController itemController = hit.transform.GetComponent<ItemController>();
-            if (itemController != null)
+            if (hit.transform.TryGetComponent(out ItemController item))
             {
-                itemController.Take();
+                return item;
             }
         }
+        return null;
     }
 }
