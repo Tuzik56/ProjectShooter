@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHp : MobHp
 {
-    public float originalHp = 50;
+    [SerializeField] private float originalHp = 50;
     private float currentHp;
 
     private void Start()

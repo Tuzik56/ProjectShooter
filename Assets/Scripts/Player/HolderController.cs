@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class HolderController : MonoBehaviour
 {
     public static HolderController Instance;
-    GameObject currentItem;
+    private GameObject currentItem;
     private Item Item;
 
 

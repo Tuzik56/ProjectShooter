@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class EnemyBehaviour : MobBehaviour
 {
-    public MobHp thisHp;
+    [SerializeField] private EnemyMovement movement;
+    [SerializeField] private MobHp hp;
+
     private bool isLive = true;
 
-    void Start()
+    private void Start()
     {
-        thisHp = GetComponent<MobHp>();
+        
+    }
+
+    private void Update()
+    {
+        movement.Patrol();
     }
 
     public override void SetDamage(float damage)
     {
         if (isLive)
         {
-            if (thisHp.SetDamage(damage))
+            if (hp.SetDamage(damage))
             {
 
             }

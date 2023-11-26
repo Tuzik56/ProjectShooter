@@ -68,8 +68,9 @@ public class GunShoot : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hitInfo, _distance, _layerMask))
         {
             var hitCollider = hitInfo.collider;
-            if (hitCollider.TryGetComponent(out MobHp mobHp))
+            if (hitCollider.tag == "Mob")
             {
+                MobHp mobHp = hitCollider.GetComponentInParent<MobHp>();
                 mobHp.SetDamage(_damage);
             }
             ShowHitEffect(hitInfo);
