@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 public class GunShoot : MonoBehaviour
 {
@@ -70,8 +69,8 @@ public class GunShoot : MonoBehaviour
             var hitCollider = hitInfo.collider;
             if (hitCollider.tag == "Mob")
             {
-                MobHp mobHp = hitCollider.GetComponentInParent<MobHp>();
-                mobHp.SetDamage(_damage);
+                MobBehaviour hp = hitCollider.GetComponentInParent<MobBehaviour>();
+                hp.SetDamage(_damage);
             }
             ShowHitEffect(hitInfo);
         }
