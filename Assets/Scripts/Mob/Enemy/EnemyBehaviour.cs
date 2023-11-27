@@ -13,7 +13,7 @@ public class EnemyBehaviour : MobBehaviour
 
     private bool isEnable = true;
 
-    private enum state { Patrol, Chase, Attack };
+    private enum state { Patrol, Chase, Attack, AvoidObstacles };
     private state currentState = state.Patrol;
 
     private void Start()
@@ -27,6 +27,10 @@ public class EnemyBehaviour : MobBehaviour
         {
             movement.Patrol();
             SetAnimationIdle();
+            if (vision.DetectPlayer())
+            {
+                currentState = state.Chase;
+            }
         }
 
         if (currentState == state.Chase)
@@ -42,12 +46,32 @@ public class EnemyBehaviour : MobBehaviour
             }
         }
 
+        if (currentState == state.AvoidObstacles)
+        {
+            if (vision.DecectObstacle())
+            {
+                currentState = state.Attack;
+            }
+            else
+            {
+                movement.ChaseTarget(player);
+                SetAnimationIdle();
+            }
+        }
+
         if (currentState == state.Attack)
         {
             if (vision.CheckDistance(player, 10))
             {
-                Attack();
-                SetAnimationAttack();
+                if (vision.DecectObstacle())
+                {
+                    Attack();
+                    SetAnimationAttack();
+                }
+                else
+                {
+                    currentState = state.AvoidObstacles;
+                }
             }
             else
             {
