@@ -14,11 +14,11 @@ public class EnemyBehaviour : MobBehaviour
     private bool isEnable = true;
 
     private enum state { Patrol, Chase, Attack, AvoidObstacles };
-    private state currentState = state.Patrol;
+    private state currentState;
 
     private void Start()
     {
-
+        currentState = state.Patrol;
     }
 
     private void Update()
@@ -65,7 +65,9 @@ public class EnemyBehaviour : MobBehaviour
             {
                 if (vision.DecectObstacle())
                 {
-                    Attack();
+                    movement.Stay();
+                    movement.LookOnTarget(player);
+                    attack.Attack(player);
                     SetAnimationAttack();
                 }
                 else
@@ -93,13 +95,6 @@ public class EnemyBehaviour : MobBehaviour
                 Debug.Log("Доигралися");
             }
         }
-    }
-
-    private void Attack()
-    {
-        movement.Stay();
-        movement.LookOnTarget(player);
-        attack.Attack(player);
     }
 
     private void SetAnimationIdle()
