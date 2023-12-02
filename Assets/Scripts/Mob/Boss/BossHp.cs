@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BossHp : MobHp
 {
-    public float originalHp = 150;
+    [SerializeField] private float originalHp = 100;
     private float currentHp;
+    private DropItem dropItem;
 
     private void Start()
     {
         currentHp = originalHp;
+        dropItem = GetComponent<DropItem>();
     }
 
     public override bool SetDamage(float damage)
@@ -21,6 +23,7 @@ public class BossHp : MobHp
         }
         else
         {
+            dropItem.CheckMob();
             Die();
             return false;
         }

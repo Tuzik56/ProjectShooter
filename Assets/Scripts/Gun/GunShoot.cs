@@ -69,7 +69,6 @@ public class GunShoot : MonoBehaviour
             var hitCollider = hitInfo.collider;
             if (hitCollider.tag == "Mob")
             {
-                Debug.Log("попали в моба");
                 MobBehaviour hp = hitCollider.GetComponentInParent<MobBehaviour>();
                 hp.SetDamage(_damage);
             }

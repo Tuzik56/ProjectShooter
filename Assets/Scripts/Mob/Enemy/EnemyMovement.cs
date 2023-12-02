@@ -11,11 +11,6 @@ public class EnemyMovement : MonoBehaviour
 
     private int currentPoint;
 
-    void Start()
-    {
-        
-    }
-
     public void Patrol()
     {
         if (agent.transform.position == agent.pathEndPosition)

@@ -1,17 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DoorsOpener : MonoBehaviour
 {
-    private GameObject[] enemies;
+    [SerializeField] private string mobTag;
+    private GameObject[] mobs;
 
-    void Update()
+    private void OnEnable()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length == 0 )
+        EnemyBehaviour.onMobDied += CheckMob;
+    }
+
+    private void CheckMob()
+    {
+        mobs = GameObject.FindGameObjectsWithTag(mobTag);
+        if (mobs.Length <= 1)
         {
-            Destroy(gameObject);
+            OpenDoor();
         }
+    }
+
+    private void OpenDoor()
+    {
+        Destroy(gameObject);
     }
 }

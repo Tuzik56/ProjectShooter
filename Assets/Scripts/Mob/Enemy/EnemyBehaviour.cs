@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class EnemyBehaviour : MobBehaviour
     [SerializeField] private EnemyVision vision;
     [SerializeField] Animator animator;
     [SerializeField] private GameObject player;
+
+    public static Action onMobDied;
 
     private bool isEnable = true;
 
@@ -92,7 +95,7 @@ public class EnemyBehaviour : MobBehaviour
             }
             else
             {
-                Debug.Log("Доигралися");
+                onMobDied.Invoke();
             }
         }
     }
