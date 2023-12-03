@@ -20,7 +20,6 @@ public class GunShoot : MonoBehaviour
     [Header("Particle System")]
     [SerializeField] private ParticleSystem _muzzleEffect;
     [SerializeField] private ParticleSystem _hitEffect;
-    [SerializeField, Min(0f)] private float _hitEffectDestroyDelay = 1f;
 
     [Header("Audio")]
     [SerializeField] private AudioSource _audioSource;
@@ -104,9 +103,8 @@ public class GunShoot : MonoBehaviour
         if (_hitEffect != null)
         {
             var hitEffectRotation = Quaternion.LookRotation(hitInfo.normal);
-            var hitEffect = Instantiate(_hitEffect, hitInfo.point, hitEffectRotation);
-
-            Destroy(hitEffect.gameObject, _hitEffectDestroyDelay);
+            var hitEffectPosition = hitInfo.point;
+            Instantiate(_hitEffect, hitEffectPosition, hitEffectRotation);
         }
     }
 
