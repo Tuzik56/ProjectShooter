@@ -70,7 +70,7 @@ public class EnemyBehaviour : MobBehaviour
                 {
                     movement.Stay();
                     movement.LookOnTarget(player);
-                    attack.Attack(player);
+                    attack.Attack();
                     SetAnimationAttack();
                 }
                 else

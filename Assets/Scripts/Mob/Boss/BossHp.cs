@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossHp : MobHp
 {
     [SerializeField] private float originalHp = 100;
+    [SerializeField] private ParticleSystem destroyEffect;
     private float currentHp;
     private DropItem dropItem;
 
@@ -25,6 +26,8 @@ public class BossHp : MobHp
         {
             dropItem.CheckMob();
             Die();
+            showDestroyEffect();
+
             return false;
         }
     }
@@ -32,5 +35,13 @@ public class BossHp : MobHp
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void showDestroyEffect()
+    {
+        if (destroyEffect != null)
+        {
+            Instantiate(destroyEffect, transform.position + new Vector3(0, 1.5f, 0), transform.rotation);
+        }
     }
 }

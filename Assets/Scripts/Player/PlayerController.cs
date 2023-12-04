@@ -11,7 +11,7 @@ public class PlayerController : MobBehaviour
     private TakeItem takeItem;
     private MobHp hp;
     private bool isEnabled = true;
-    private bool isLive = true;
+    //private bool isLive = true;
 
     void Start()
     {
@@ -34,17 +34,18 @@ public class PlayerController : MobBehaviour
 
     public override void SetDamage(float damage)
     {
-        if (isLive)
-        {
-            if (hp.SetDamage(damage))
-            {
-
-            }
-            else
-            {
-                Debug.Log("Доигралися");
-            }
-        }
+        //if (isLive)
+        //{
+        //    if (hp.SetDamage(damage))
+        //    {
+        //
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Доигралися");
+        //    }
+        //}
+        Debug.Log("бьють");
     }
 
     private void OnEnable()

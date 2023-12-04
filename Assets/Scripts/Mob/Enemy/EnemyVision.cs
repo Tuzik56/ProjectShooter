@@ -11,8 +11,6 @@ public class EnemyVision : MonoBehaviour
     [SerializeField] private int rayCount;
     [SerializeField] private float rayAngle;
 
-
-
     public bool DetectPlayer()
     {
         bool result = false;
@@ -38,7 +36,7 @@ public class EnemyVision : MonoBehaviour
 
     private bool MakeRay(Vector3 direction)
     {
-        Vector3 position = agent.transform.position + new Vector3(0, 1, 0);
+        Vector3 position = agent.transform.position + new Vector3(0, 2.6f, 0);
         var ray = new Ray(position, direction);
 
         Debug.DrawRay(position, direction * rayDistance, Color.red);
@@ -53,7 +51,7 @@ public class EnemyVision : MonoBehaviour
 
     public bool DecectObstacle()
     {
-        Vector3 position = agent.transform.position + new Vector3(0, 1, 0);
+        Vector3 position = agent.transform.position + new Vector3(0, 2.6f, 0);
         Vector3 direction = agent.transform.forward;
         var ray = new Ray(position, direction);
 
