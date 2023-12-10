@@ -20,7 +20,7 @@ public class EnemyAttack : MonoBehaviour
     
     private void PushProjectile()
     {
-        Vector3 projectilePosition = transform.position + new Vector3(0, 1.5f, 0) + transform.forward;
+        Vector3 projectilePosition = transform.position + new Vector3(0, 2f, 0) + transform.forward;
         GameObject projectile = Instantiate(projectilePrefab, projectilePosition, Quaternion.identity);
         Rigidbody projectileRigitbody = projectile.GetComponent<Rigidbody>();
         projectileRigitbody.AddForce(transform.forward * speed, ForceMode.VelocityChange);

@@ -8,15 +8,10 @@ public class DoorsOpener : MonoBehaviour
     [SerializeField] private string mobTag;
     private GameObject[] mobs;
 
-    private void OnEnable()
-    {
-        EnemyBehaviour.onMobDied += CheckMob;
-    }
-
-    private void CheckMob()
+    private void Update()
     {
         mobs = GameObject.FindGameObjectsWithTag(mobTag);
-        if (mobs.Length <= 1)
+        if (mobs.Length == 0)
         {
             OpenDoor();
         }

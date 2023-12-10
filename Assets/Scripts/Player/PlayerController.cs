@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MobBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerController : MobBehaviour
     private TakeItem takeItem;
     private MobHp hp;
     private bool isEnabled = true;
-    //private bool isLive = true;
+    private bool isLive = true;
 
     void Start()
     {
@@ -34,17 +35,18 @@ public class PlayerController : MobBehaviour
 
     public override void SetDamage(float damage)
     {
-        //if (isLive)
-        //{
-        //    if (hp.SetDamage(damage))
-        //    {
-        //
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("Доигралися");
-        //    }
-        //}
+        if (isLive)
+        {
+            if (hp.SetDamage(damage))
+            {
+                
+            }
+            else
+            {
+                RestartLevel();
+                Debug.Log("Доигралися");
+            }
+        }
         Debug.Log("бьють");
     }
 
@@ -62,5 +64,10 @@ public class PlayerController : MobBehaviour
     private void SetDisable()
     {
         isEnabled = false;
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

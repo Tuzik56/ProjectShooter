@@ -12,8 +12,6 @@ public class EnemyBehaviour : MobBehaviour
     [SerializeField] Animator animator;
     [SerializeField] private GameObject player;
 
-    public static Action onMobDied;
-
     private bool isEnable = true;
 
     private enum state { Patrol, Chase, Attack, AvoidObstacles };
@@ -95,7 +93,7 @@ public class EnemyBehaviour : MobBehaviour
             }
             else
             {
-                onMobDied.Invoke();
+
             }
         }
     }
