@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   icon: {fileID: 21300000, guid: 5de32dd9260fb5e4fa2ad8dd7315d210, type: 3}
-  gameObj: {fileID: 7010252061334258954, guid: b2f3279dcbeb7bd48ab9b128bd45cadd, type: 3}
+  gameObj: {fileID: 6051368296942558271, guid: 284fb4bd4842249459264c1aba61d653, type: 3}
