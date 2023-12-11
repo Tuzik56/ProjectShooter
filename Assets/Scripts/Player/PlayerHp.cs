@@ -19,6 +19,11 @@ public class PlayerHp : MobHp
     public override bool SetDamage(float damage)
     {
         currentHp -= damage;
+        return CheckHp();
+    }
+
+    public bool CheckHp()
+    {
         if (currentHp > 0)
         {
             hpStatus.value = currentHp;
@@ -34,5 +39,18 @@ public class PlayerHp : MobHp
     private void Die()
     {
         Debug.Log("недолго песенка играла");
+    }
+
+    public void ChangeHp(float value)
+    {
+        if (currentHp + value > originalHp)
+        {
+            currentHp = originalHp;
+        } 
+        else
+        {
+            currentHp += value;
+        }
+        CheckHp();
     }
 }

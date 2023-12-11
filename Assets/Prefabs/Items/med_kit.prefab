@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8690329682587834435}
   - component: {fileID: 4223110944437354074}
   - component: {fileID: 8257926998988524138}
-  - component: {fileID: 423897457621634135}
+  - component: {fileID: 9046585401232765073}
+  - component: {fileID: 8958579531208339105}
   m_Layer: 0
   m_Name: med_kit
   m_TagString: Item
@@ -84,7 +85,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &423897457621634135
+--- !u!114 &9046585401232765073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,10 +94,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 442891657855541334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f84aeaa627fabe046a7e5b2201a31c19, type: 3}
+  m_Script: {fileID: 11500000, guid: 89d89c3195e0169419f1cf06646322b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 4d3fb91afb8745e498c9ccd160198f87, type: 2}
+  medKitScript: {fileID: 8958579531208339105}
+--- !u!114 &8958579531208339105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442891657855541334}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3818a75576840494cb7a5a3ee7e4c44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heal: 50
 --- !u!1 &448081282884501909
 GameObject:
   m_ObjectHideFlags: 0
