@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MedKitItem
   m_EditorClassIdentifier: 
   id: 6
-  icon: {fileID: 21300000, guid: e2e4e0e4b6a34794c9ff7dca23d7661f, type: 3}
+  icon: {fileID: 21300000, guid: 19247153c8ce4ae41a91a999ea79b999, type: 3}
   gameObj: {fileID: 442891657855541334, guid: 1e07ff6a5b038ef449aa06931869259c, type: 3}
