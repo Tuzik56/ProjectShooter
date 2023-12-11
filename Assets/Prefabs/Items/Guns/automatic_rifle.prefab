@@ -1672,14 +1672,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b8b209787894741895318af4815840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 30
+  _damage: 10
   _layerMask:
     serializedVersion: 2
     m_Bits: 137
   _distance: Infinity
-  _shotCount: 1
-  _shootPause: 0.5
-  _useSpread: 0
+  _shotCount: 5
+  _shootPause: 1
+  _useSpread: 1
   _spreadFactor: 0.1
   _muzzleEffect: {fileID: 892980844931982068}
   _hitEffect: {fileID: 5024009746357069192, guid: 0635be773cd77f3408bee292fb8a40b4, type: 3}

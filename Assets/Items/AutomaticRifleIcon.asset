@@ -15,3 +15,5 @@ MonoBehaviour:
   id: 3
   icon: {fileID: 21300000, guid: 6c9b5eecdca78b246bf9d49ec6b999e7, type: 3}
   gameObj: {fileID: 6051368296942558271, guid: 284fb4bd4842249459264c1aba61d653, type: 3}
+  position: {x: -0.28, y: -0.09, z: 0.3}
+  rotation: {x: -2.5, y: -5.8, z: 0}

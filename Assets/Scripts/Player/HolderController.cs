@@ -9,7 +9,6 @@ public class HolderController : MonoBehaviour
     private GameObject currentItem;
     private Item Item;
 
-
     private void Awake()
     {
         Instance = this;
@@ -30,8 +29,8 @@ public class HolderController : MonoBehaviour
         currentItem = Instantiate(item.gameObj);
         currentItem.GetComponent<Rigidbody>().isKinematic = true;
         currentItem.transform.parent = transform;
-        currentItem.transform.localPosition = Vector3.zero;
-        currentItem.transform.localEulerAngles = new Vector3(0f, -20f, 0f);
+        currentItem.transform.localPosition = item.position;
+        currentItem.transform.localEulerAngles = item.rotation;
         currentItem.GetComponent<ItemController>().SetActive();
     }
 
