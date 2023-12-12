@@ -11,7 +11,6 @@ public class PlayerController : MobBehaviour
     private CameraMovement cameraMovement;
     private TakeItem takeItem;
     private MobHp hp;
-    private LevelManager levelManager;
     private bool isEnabled = true;
     private bool isLive = true;
 
@@ -21,7 +20,6 @@ public class PlayerController : MobBehaviour
         cameraMovement = gameObject.GetComponentInChildren<CameraMovement>();
         hp = gameObject.GetComponent<MobHp>();
         takeItem = gameObject.GetComponent<TakeItem>();
-        levelManager = new LevelManager();
     }
 
     void Update()
@@ -45,7 +43,7 @@ public class PlayerController : MobBehaviour
             }
             else
             {
-                levelManager.RestartLevel();
+                LevelManager.Instance.RestartLevel();
                 Debug.Log("Доигралися");
             }
         }

@@ -4,7 +4,6 @@ using UnityEngine;
 public class KeyCardScript : MonoBehaviour
 {
     private Transform cameraTransform;
-    private LevelManager levelManager;
 
     private float range = 5;
     private string doorTag = "ExitLevel";
@@ -12,7 +11,6 @@ public class KeyCardScript : MonoBehaviour
     void Start()
     {
         cameraTransform = Camera.main.transform;
-        levelManager = new LevelManager();
     }
 
     void Update()
@@ -21,7 +19,7 @@ public class KeyCardScript : MonoBehaviour
         {
             if (CheckDoor())
             {
-                levelManager.CompleteLevel();
+                LevelManager.Instance.CompleteLevel();
             }
         }
     }
