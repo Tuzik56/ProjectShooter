@@ -14,7 +14,7 @@ public class EnemyAttack : MonoBehaviour
         if (Time.time > timeLastShoot + shootPause)
         {
             PushProjectile();
-            Debug.Log("Оно пытается драться");
+            timeLastShoot = Time.time;
         }
     }
     
@@ -24,7 +24,5 @@ public class EnemyAttack : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, projectilePosition, Quaternion.identity);
         Rigidbody projectileRigitbody = projectile.GetComponent<Rigidbody>();
         projectileRigitbody.AddForce(transform.forward * speed, ForceMode.VelocityChange);
-
-        timeLastShoot = Time.time;
     }
 }
