@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CrystalItem
   m_EditorClassIdentifier: 
   id: 8
-  icon: {fileID: 21300000, guid: e2e4e0e4b6a34794c9ff7dca23d7661f, type: 3}
+  icon: {fileID: 21300000, guid: 8612815a478b227489b8515f6712a9dd, type: 3}
   gameObj: {fileID: 5854688343914581545, guid: a0cc2383dd5f0c4429950c40dd17fda9, type: 3}
   position: {x: -0.2, y: 0.05, z: 0.06}
   rotation: {x: -12, y: 88, z: 0}
