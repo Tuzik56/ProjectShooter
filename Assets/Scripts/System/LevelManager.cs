@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -5,7 +7,13 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-    [SerializeField] private Text text;
+    public static Action onLevelCompleted;
+    [SerializeField] private GameObject screen;
+    [SerializeField] private GameObject aim;
+    [SerializeField] private GameObject hpBar;
+    [SerializeField] private Image score;
+    [SerializeField] private List<Sprite> scoreSprites;
+    [SerializeField] private Item scoreItem;
 
     private void Awake()
     {
@@ -19,6 +27,22 @@ public class LevelManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        text.enabled = true;
+        aim.SetActive(false);
+        hpBar.SetActive(false);
+
+        screen.SetActive(true);
+
+        if (InventoryManager.Instance.ContainsItem(scoreItem))
+        {
+            score.sprite = scoreSprites[0];
+        }
+        else
+        {
+            score.sprite = scoreSprites[1];
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        onLevelCompleted.Invoke();
     }
 }

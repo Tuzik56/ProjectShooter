@@ -15,7 +15,6 @@ public class InventoryManager : MonoBehaviour
     
     public InventoryItemController[] InventoryItems;
 
-
     private void Awake()
     {
         Instance = this; 
@@ -77,5 +76,10 @@ public class InventoryManager : MonoBehaviour
         {
             InventoryItems[i].AddItem(Items[i]);
         }
+    }
+
+    public bool ContainsItem(Item item)
+    {
+        return Items.Contains(item);
     }
 }

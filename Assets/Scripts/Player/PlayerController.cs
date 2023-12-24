@@ -54,6 +54,7 @@ public class PlayerController : MobBehaviour
     {
         InventoryOpener.onInventoryOpened += SetDisable;
         InventoryOpener.onInventoryClosed += SetEnable;
+        LevelManager.onLevelCompleted += SetDisable;
     }
 
     private void SetEnable()
