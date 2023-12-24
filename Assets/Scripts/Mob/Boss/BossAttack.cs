@@ -46,7 +46,7 @@ public class BossAttack : MonoBehaviour
 
     private void PushProjectile(Vector3 direction)
     {
-        Vector3 projectilePosition = transform.position + new Vector3(0, 2f, 0) + direction * 2f;
+        Vector3 projectilePosition = transform.position + new Vector3(0, 0.5f, 0) + direction * 2f;
         GameObject projectile = Instantiate(projectilePrefab, projectilePosition, Quaternion.identity);
         Rigidbody projectileRigitbody = projectile.GetComponent<Rigidbody>();
 

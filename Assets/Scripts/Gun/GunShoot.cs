@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunShoot : MonoBehaviour
@@ -51,11 +52,11 @@ public class GunShoot : MonoBehaviour
 
     public void Shoot()
     {
+        ShowMuzzleEffect();
         for (var i = 0; i < _shotCount; i++)
         {
             TakeShot();
         }
-        ShowMuzzleEffect();
     }
 
     private void TakeShot()
