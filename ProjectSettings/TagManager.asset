@@ -10,6 +10,7 @@ TagManager:
   - Mob
   - Boss
   - ExitLevel
+  - MainAudioSource
   layers:
   - Default
   - TransparentFX

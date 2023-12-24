@@ -7,6 +7,8 @@ public class TakeItem : MonoBehaviour
 {
     [SerializeField] private Transform _cameraTransform;
     [SerializeField] private float _range = 10f;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClip;
 
     public void Take()
     {
@@ -16,6 +18,7 @@ public class TakeItem : MonoBehaviour
             if (item != null)
             {
                 item.Take();
+                PlaySound();
             }
         }
     }
@@ -31,5 +34,13 @@ public class TakeItem : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void PlaySound()
+    {
+        if (_audioSource != null && _audioClip != null)
+        {
+            _audioSource.PlayOneShot(_audioClip);
+        }
     }
 }
