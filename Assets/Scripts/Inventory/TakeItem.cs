@@ -26,7 +26,7 @@ public class TakeItem : MonoBehaviour
     public ItemController FindItem()
     {
         RaycastHit hit;
-        if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _range))
+        if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, _range, ~(1 << LayerMask.NameToLayer("RaycastIgnore"))))
         {
             if (hit.transform.TryGetComponent(out ItemController item))
             {
