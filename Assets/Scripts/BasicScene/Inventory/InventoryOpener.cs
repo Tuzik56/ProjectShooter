@@ -45,7 +45,10 @@ public class InventoryOpener : MonoBehaviour
         InventoryManager.Instance.OpenInventory();
         isOpened = true;
         PlaySound();
-        onInventoryOpened.Invoke();
+        if (onInventoryOpened != null)
+        {
+            onInventoryOpened.Invoke();
+        }
     }
 
     public void Close()
@@ -55,7 +58,10 @@ public class InventoryOpener : MonoBehaviour
         InventoryManager.Instance.CloseInvenroty();
         isOpened = false;
         PlaySound();
-        onInventoryClosed.Invoke();
+        if (onInventoryClosed != null)
+        {
+            onInventoryClosed.Invoke();
+        }
     }
 
     private void PlaySound()

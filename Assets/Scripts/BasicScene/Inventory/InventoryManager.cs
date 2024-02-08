@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    public List<Item> Items = new List<Item>();
+    public static List<Item> Items = new List<Item>();
 
     public Transform ItemContent;
     public GameObject InventoryItem;
@@ -81,5 +81,27 @@ public class InventoryManager : MonoBehaviour
     public bool ContainsItem(Item item)
     {
         return Items.Contains(item);
+    }
+
+    public int CountContainedItems(int id)
+    {
+        int count = 0;
+        List<Item> itemsToRemove = new();
+
+        foreach (Item item in Items)
+        {
+            if (item.id == id)
+            {
+                count++;
+                itemsToRemove.Add(item);
+            }
+        }
+
+        foreach (Item item in itemsToRemove)
+        {
+            Items.Remove(item);
+        }
+
+        return count;
     }
 }
