@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -40,8 +38,6 @@ public class InventoryOpener : MonoBehaviour
 
     public void Open()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         InventoryManager.Instance.OpenInventory();
         isOpened = true;
         PlaySound();
@@ -53,8 +49,6 @@ public class InventoryOpener : MonoBehaviour
 
     public void Close()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         InventoryManager.Instance.CloseInvenroty();
         isOpened = false;
         PlaySound();

@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : BaseSceneManager
 {
     public static LevelManager Instance;
     public static Action onLevelCompleted;
+
     [SerializeField] private GameObject screen;
     [SerializeField] private GameObject aim;
     [SerializeField] private GameObject hpBar;
@@ -18,6 +19,12 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    override
+    public void OnSceneStarted()
+    {
+
     }
 
     public void RestartLevel()
@@ -44,5 +51,16 @@ public class LevelManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         onLevelCompleted.Invoke();
+    }
+
+    private void OnEnable()
+    {
+        PlayerController.onPlayerDied += RestartLevel;
+        KeyCardScript.OnFinalDoorActivated += LoadFinalRoomScene;
+    }
+
+    private void LoadFinalRoomScene()
+    {
+        SceneManager.LoadScene("FinalRoomScene");
     }
 }

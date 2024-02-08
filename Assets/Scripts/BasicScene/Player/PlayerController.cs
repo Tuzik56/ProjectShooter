@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerController : MobBehaviour
 {
@@ -13,6 +9,7 @@ public class PlayerController : MobBehaviour
     private MobHp hp;
     private bool isEnabled = true;
     private bool isLive = true;
+    public static Action onPlayerDied;
 
     void Start()
     {
@@ -43,8 +40,10 @@ public class PlayerController : MobBehaviour
             }
             else
             {
-                LevelManager.Instance.RestartLevel();
-                Debug.Log("Доигралися");
+                if (onPlayerDied != null)
+                {
+                    onPlayerDied.Invoke();
+                }
             }
         }
         Debug.Log("бьють");
@@ -53,7 +52,11 @@ public class PlayerController : MobBehaviour
     private void OnEnable()
     {
         InventoryOpener.onInventoryOpened += SetDisable;
+        InventoryOpener.onInventoryOpened += ShowCursor;
+
         InventoryOpener.onInventoryClosed += SetEnable;
+        InventoryOpener.onInventoryClosed += HideCursor;
+
         LevelManager.onLevelCompleted += SetDisable;
     }
 
@@ -65,5 +68,17 @@ public class PlayerController : MobBehaviour
     private void SetDisable()
     {
         isEnabled = false;
+    }
+
+    private void ShowCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void HideCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

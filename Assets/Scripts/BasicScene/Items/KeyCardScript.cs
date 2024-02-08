@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class KeyCardScript : MonoBehaviour
 
     private float range = 5;
     private string doorTag = "ExitLevel";
+    public static Action OnFinalDoorActivated;
 
     void Start()
     {
@@ -19,7 +21,11 @@ public class KeyCardScript : MonoBehaviour
         {
             if (CheckDoor())
             {
-                LevelManager.Instance.CompleteLevel();
+                //LevelManager.Instance.CompleteLevel();
+                if (OnFinalDoorActivated != null)
+                {
+                    OnFinalDoorActivated.Invoke();
+                }
             }
         }
     }
