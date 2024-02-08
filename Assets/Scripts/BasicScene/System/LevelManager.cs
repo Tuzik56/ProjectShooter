@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelManager : BaseSceneManager
+public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     public static Action onLevelCompleted;
@@ -19,12 +19,6 @@ public class LevelManager : BaseSceneManager
     private void Awake()
     {
         Instance = this;
-    }
-
-    override
-    public void OnSceneStarted()
-    {
-
     }
 
     public void RestartLevel()

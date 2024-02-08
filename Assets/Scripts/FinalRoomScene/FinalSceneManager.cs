@@ -1,17 +1,15 @@
 using UnityEngine;
 
-public class FinalSceneManager : BaseSceneManager
+public class FinalSceneManager : MonoBehaviour
 {
-
-
-    override
-    public void OnSceneStarted()
+    private void Start()
     {
-        ShowLoadedSceneEffect();
+        ShowCursor();
     }
 
-    private void ShowLoadedSceneEffect()
+    private void ShowCursor()
     {
-
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

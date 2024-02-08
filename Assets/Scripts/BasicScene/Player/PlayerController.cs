@@ -60,6 +60,17 @@ public class PlayerController : MobBehaviour
         LevelManager.onLevelCompleted += SetDisable;
     }
 
+    private void OnDisable()
+    {
+        InventoryOpener.onInventoryOpened -= SetDisable;
+        InventoryOpener.onInventoryOpened -= ShowCursor;
+
+        InventoryOpener.onInventoryClosed -= SetEnable;
+        InventoryOpener.onInventoryClosed -= HideCursor;
+
+        LevelManager.onLevelCompleted -= SetDisable;
+    }
+
     private void SetEnable()
     {
         isEnabled = true;
