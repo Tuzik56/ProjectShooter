@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public float mouseSensivity = 450f;
-    public Transform playerBody;
-    float xRotation = 0f;
+    [SerializeField] private float mouseSensivity = 450f;
+    [SerializeField] private Transform playerBody;
+    private float xRotation = 0f;
 
     void Start()
     {

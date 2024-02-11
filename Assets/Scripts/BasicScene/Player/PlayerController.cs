@@ -6,7 +6,7 @@ public class PlayerController : MobBehaviour
     private PlayerMovement playerMovement;
     private CameraMovement cameraMovement;
     private TakeItem takeItem;
-    private MobHp hp;
+    private PlayerHp hp;
     private bool isEnabled = true;
     private bool isLive = true;
     public static Action onPlayerDied;
@@ -15,7 +15,7 @@ public class PlayerController : MobBehaviour
     {
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         cameraMovement = gameObject.GetComponentInChildren<CameraMovement>();
-        hp = gameObject.GetComponent<MobHp>();
+        hp = gameObject.GetComponent<PlayerHp>();
         takeItem = gameObject.GetComponent<TakeItem>();
     }
 
@@ -46,7 +46,6 @@ public class PlayerController : MobBehaviour
                 }
             }
         }
-        Debug.Log("бьють");
     }
 
     private void OnEnable()
