@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Image score;
     [SerializeField] private List<Sprite> scoreSprites;
     [SerializeField] private Item scoreItem;
+    [SerializeField] private AudioSource bgAudioSource;
 
     private const string SCENE_0 = "SampleScene";
     private const string SCENE_1 = "FinalRoomScene";
@@ -62,6 +63,7 @@ public class LevelManager : MonoBehaviour
     private void LoadFinalRoomScene()
     {
         LoadScene(SCENE_1);
+        StartCoroutine(BgSoundFade());
     }
 
     private void LoadScene(string sceneName)
@@ -72,6 +74,20 @@ public class LevelManager : MonoBehaviour
         }
 
         StartCoroutine(LoadSceneRoutine(sceneName));
+    }
+
+    private IEnumerator BgSoundFade()
+    {
+        float fadeDuration = 1f;
+        float startVolume = bgAudioSource.volume;
+        while (bgAudioSource.volume > 0f)
+        {
+            bgAudioSource.volume -= startVolume * Time.deltaTime / fadeDuration;
+            yield return null;
+        }
+
+        bgAudioSource.Stop();
+        bgAudioSource.volume = startVolume;
     }
 
     private IEnumerator LoadSceneRoutine(string sceneName)
