@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,14 +17,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<Sprite> scoreSprites;
     [SerializeField] private Item scoreItem;
 
+    private const string SCENE_0 = "SampleScene";
+    private const string SCENE_1 = "FinalRoomScene";
+
+    private bool isLoading;
+
     private void Awake()
     {
         Instance = this;
     }
 
-    public void RestartLevel()
+    public void LoadBasicScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadScene(SCENE_0);
     }
 
     public void CompleteLevel()
@@ -49,12 +55,54 @@ public class LevelManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerController.onPlayerDied += RestartLevel;
+        PlayerController.onPlayerDied += LoadBasicScene;
         KeyCardScript.OnFinalDoorActivated += LoadFinalRoomScene;
     }
 
     private void LoadFinalRoomScene()
     {
-        SceneManager.LoadScene("FinalRoomScene");
+        LoadScene(SCENE_1);
+    }
+
+    private void LoadScene(string sceneName)
+    {
+        if (isLoading)
+        {
+            return;
+        }
+
+        StartCoroutine(LoadSceneRoutine(sceneName));
+    }
+
+    private IEnumerator LoadSceneRoutine(string sceneName)
+    {
+        isLoading = true;
+        bool waitFading = true;
+        Fader.Instance.FadeIn(() =>  waitFading = false);
+
+        while (waitFading)
+        {
+            yield return null;
+        }
+
+        var async = SceneManager.LoadSceneAsync(sceneName);
+        async.allowSceneActivation = false;
+
+        while (async.progress < 0.9f)
+        {
+            yield return null;
+        }
+
+        async.allowSceneActivation = true;
+
+        waitFading = true;
+        Fader.Instance.FadeOut(() => waitFading = false);
+
+        while (waitFading)
+        {
+            yield return null;
+        }
+
+        isLoading = false;
     }
 }
