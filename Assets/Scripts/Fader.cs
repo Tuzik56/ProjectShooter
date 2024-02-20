@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Fader : MonoBehaviour
 {
-    private const string FADER_PATH = "Prefabs/Fader";
+    private const string FADER_PATH = "Prefabs/System/Fader";
 
     private static Fader _instance;
     public static Fader Instance

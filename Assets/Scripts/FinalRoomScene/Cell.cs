@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
+    private bool isEmpty = true;
+
     private void OnMouseDown()
     {
         GameObject obj = SetCrystals.Instance.GetSelectedCrystal();
 
-        if (obj != null)
+        if (obj != null & isEmpty)
         {
             PlaceInCell(obj);
             SetCrystals.Instance.SetSelectedCrystal(null);
+            SetCrystals.Instance.CellIsFull();
+            isEmpty = false;
         }
     }
 
@@ -19,5 +23,7 @@ public class Cell : MonoBehaviour
     {
         obj.transform.position = transform.localPosition;
         obj.transform.rotation = Quaternion.Euler(23, 0, 0);
+
+        Destroy(obj.GetComponent<SelectableObject>());
     }
 }

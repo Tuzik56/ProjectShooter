@@ -2826,6 +2826,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70d9e1e6d7690ae49875bbdf3d6aecd9, type: 3}
+--- !u!198 &1536909540 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5233238531502790710, guid: 70d9e1e6d7690ae49875bbdf3d6aecd9, type: 3}
+  m_PrefabInstance: {fileID: 1536909539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1748224329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,8 +3298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 5
+  outlineColor: {r: 1, g: 1, b: 1, a: 0.74509805}
+  outlineWidth: 6
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -3469,7 +3474,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1883090945}
   - component: {fileID: 1883090946}
-  - component: {fileID: 1883090947}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -3504,18 +3508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1655cf30ee3da4b8d1fc16a9b85936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1883090947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883090944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2fda4d612d9dbe46a7a11637ff014b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _crushEffect: {fileID: 1536909540}
 --- !u!1 &1922950985
 GameObject:
   m_ObjectHideFlags: 0

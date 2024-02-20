@@ -1,15 +1,24 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class SetCrystals : MonoBehaviour
 {
     public static SetCrystals Instance;
+    public static Action onCellsAreFull;
+
     [SerializeField] private GameObject[] crystals;
+
+    private int cells;
     private GameObject selectedCrystal;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        cells = crystals.Length;
     }
 
     public void Set()
@@ -37,5 +46,17 @@ public class SetCrystals : MonoBehaviour
     public GameObject GetSelectedCrystal()
     {
         return selectedCrystal;
+    }
+
+    public void CellIsFull()
+    {
+        cells--;
+        if (cells == 0)
+        {
+            if (onCellsAreFull != null)
+            {
+                onCellsAreFull.Invoke();
+            }
+        }
     }
 }
